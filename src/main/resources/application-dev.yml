@@ -1,0 +1,30 @@
+server:
+  #https端口
+  port: 443
+  #https证书配置
+  ssl:
+    key-store: 214307622180807.pfx
+    key-store-password: 214307622180807
+    key-store-type: PKCS12
+
+#HTTP端口
+myHttpPort: 80
+#文件上传的存储路径
+fileUploadPath: E:/mount/
+
+spring:
+  #数据库配置
+  datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/ass_cre_inv_sys?useUnicode=true&characterEncoding=UTF-8
+      username: root
+      password: 123456
+  #redis配置
+  redis:
+    host: localhost
+    port: 8081
+  http:
+    #文件上传配置
+    multipart:
+      max-file-size: 10MB #文件大小限制
+      max-request-size: 100MB #请求大小限制
