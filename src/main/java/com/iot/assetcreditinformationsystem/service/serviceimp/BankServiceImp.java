@@ -3,6 +3,7 @@ package com.iot.assetcreditinformationsystem.service.serviceimp;
 import com.iot.assetcreditinformationsystem.domain.Bank;
 import com.iot.assetcreditinformationsystem.repository.BankRepository;
 import com.iot.assetcreditinformationsystem.service.BankService;
+import com.iot.assetcreditinformationsystem.util.ResponseModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

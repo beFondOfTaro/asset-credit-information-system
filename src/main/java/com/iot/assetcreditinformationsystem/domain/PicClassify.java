@@ -34,4 +34,12 @@ public class PicClassify {
     public void setClassify(String classify) {
         this.classify = classify;
     }
+
+    @Override
+    public String toString() {
+        return "PicClassify{" +
+                "id=" + id +
+                ", classify='" + classify + '\'' +
+                '}';
+    }
 }

@@ -1,8 +1,7 @@
 package com.iot.assetcreditinformationsystem.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class OutsidePicture {
@@ -13,7 +12,10 @@ public class OutsidePicture {
 
     private String pic;//图片路径
 
-    private Integer picClassifyId;//图片类别
+    @NotNull
+    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH})
+    @JoinColumn(name = "pic_classify_id",referencedColumnName = "id",insertable = true,updatable = true)
+    private PicClassify picClassify;//图片类别
 
     private Integer preAssessmentReportId;//预评报单
 
@@ -36,12 +38,12 @@ public class OutsidePicture {
         this.pic = pic;
     }
 
-    public Integer getPicClassifyId() {
-        return picClassifyId;
+    public PicClassify getPicClassify() {
+        return picClassify;
     }
 
-    public void setPicClassifyId(Integer picClassifyId) {
-        this.picClassifyId = picClassifyId;
+    public void setPicClassify(PicClassify picClassify) {
+        this.picClassify = picClassify;
     }
 
     public Integer getPreAssessmentReportId() {

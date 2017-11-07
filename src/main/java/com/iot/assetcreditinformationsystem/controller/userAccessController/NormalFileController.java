@@ -42,7 +42,7 @@ public class NormalFileController {
         logger.info("用户id:"+userId+",文件"+fileName+"下载结束");
     }
 
-    @PostMapping(value = "filedelete")
+    @DeleteMapping(value = "filedelete")
     public ResponseModel filesDelete(@RequestParam("fileName") String fileName,
                                      @RequestParam("userid") Integer userId){
         logger.info("用户id:"+userId+",请求删除文件："+fileName);

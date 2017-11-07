@@ -97,7 +97,6 @@ public class FileServiceImp implements FileService {
                 //根据照片类型获取该类型的id
                 PicClassify picClassifyObj =  picClassifyRepository.findByClassify(picClassify);
                 if (picClassifyObj!=null){
-                    Integer picClassifyId =  picClassifyObj.getId();
                     //写入文件信息到outside_picture表
                     //存储pic为上传仓库的相对路径
                     String responseFileAbsPath = responseFileInfo
@@ -109,7 +108,8 @@ public class FileServiceImp implements FileService {
                                     responseFileAbsPath.indexOf(fileUploadPath)+fileUploadPath.length()
                             )
                     );
-                    outsidePicture.setPicClassifyId(picClassifyId);
+                    logger.info(picClassifyObj.toString());
+                    outsidePicture.setPicClassify(picClassifyObj);
                     outsidePictureRepository.save(outsidePicture);
                     logger.info("第"+count+"个文件上传成功");
                     fileResponseInfo.put("fileName",file.getOriginalFilename());
@@ -162,7 +162,7 @@ public class FileServiceImp implements FileService {
             responseModel = new ResponseModel(ResponseModel.SUCCESS_MSG);
         }
         else {
-            responseModel = new ResponseModel(400,ResponseModel.FAILED_MSG);
+            responseModel = new ResponseModel(ResponseModel.FAILED_MSG);
         }
         return responseModel;
     }

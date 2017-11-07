@@ -63,7 +63,8 @@ public class LocationInfoServiceImp implements LocationInfoService {
             locationInfoRepository.delete(id);
             return new ResponseModel();
         } catch (Exception e) {
-            return new ResponseModel(HttpStatus.BAD_REQUEST.value(),e.getMessage());
+            e.printStackTrace();
+            return new ResponseModel(HttpStatus.OK.value(),ResponseModel.FAILED_MSG);
         }
     }
 
@@ -73,7 +74,8 @@ public class LocationInfoServiceImp implements LocationInfoService {
             locationInfoRepository.deleteByPreAssessmentReportId(preAssessmentReportId);
             return new ResponseModel();
         } catch (Exception e) {
-            return new ResponseModel(HttpStatus.BAD_REQUEST.value(),e.getMessage());
+            e.printStackTrace();
+            return new ResponseModel(HttpStatus.OK.value(),ResponseModel.FAILED_MSG);
         }
     }
 }

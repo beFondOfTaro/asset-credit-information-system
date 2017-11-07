@@ -3,6 +3,7 @@ package com.iot.assetcreditinformationsystem.service.serviceimp;
 import com.iot.assetcreditinformationsystem.domain.PreAssessmentReport;
 import com.iot.assetcreditinformationsystem.repository.PreAssessmentReportRepository;
 import com.iot.assetcreditinformationsystem.service.PreAssessmentReportService;
+import com.iot.assetcreditinformationsystem.util.ResponseModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -88,5 +89,10 @@ public class PreAssessmentReportServiceImp implements PreAssessmentReportService
         data.put("loanAmount", preAssessmentReport.getLoanAmount());
         data.put("remarks",preAssessmentReport.getRemarks());
         return data;
+    }
+
+    @Override
+    public ResponseModel updateIsAssessedById(Integer preAssessmentReportId, boolean isAssessed) {
+        return new ResponseModel(preAssessmentReportRepository.updateIsAssessedById(preAssessmentReportId,isAssessed));
     }
 }
